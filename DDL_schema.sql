@@ -97,22 +97,6 @@ CREATE SEQUENCE public.users_id_seq
 	CACHE 1
 	NO CYCLE;-- public."_prisma_migrations" определение
 
--- Drop table
-
--- DROP TABLE public."_prisma_migrations";
-
-CREATE TABLE public."_prisma_migrations" (
-	id varchar(36) NOT NULL,
-	checksum varchar(64) NOT NULL,
-	finished_at timestamptz NULL,
-	migration_name varchar(255) NOT NULL,
-	logs text NULL,
-	rolled_back_at timestamptz NULL,
-	started_at timestamptz DEFAULT now() NOT NULL,
-	applied_steps_count int4 DEFAULT 0 NOT NULL,
-	CONSTRAINT "_prisma_migrations_pkey" PRIMARY KEY (id)
-);
-
 
 -- public.files определение
 
@@ -316,5 +300,3 @@ CREATE UNIQUE INDEX users_email_key ON public.users USING btree (email);
 CREATE UNIQUE INDEX users_favorite_id_key ON public.users USING btree (favorite_id);
 CREATE UNIQUE INDEX users_id_key ON public.users USING btree (id);
 CREATE UNIQUE INDEX users_username_key ON public.users USING btree (username);
-
-
