@@ -1,20 +1,31 @@
 # db
 
 ```mermaid
-  erDiagram
-    USERS }|..|{ FILES : has
-    USERS ||--o{ FAVORITES : has
-    USERS ||--o{ MOVIES : "watches"
-    USERS ||--o{ DIRECTORS : "employs"
-    FILES ||--o{ DIRECTORS : "depicts"
-    FILES ||--o{ PERSONS : "depicts"
-    FILES ||--o{ MOVIES : "provides poster for"
+erDiagram
+    USERS ||--o{ FILES : "has avatar"
+    USERS ||--o{ FAVORITES : "has favorite"
+
+    FAVORITES ||--|{ MOVIES : "references"
+
+    FILES ||--o{ DIRECTORS : "profile picture"
+    FILES ||--o{ PERSONS : "profile picture"
+    FILES ||--o{ CHARACTERS : "image"
+    FILES ||--o{ MOVIES : "poster"
+
+    DIRECTORS ||--|{ MOVIES : "directs"
+
     MOVIES ||--o{ MOVIE_GENRES : "categorized by"
-    GENRES ||--|{ MOVIE_GENRES : includes
-    DIRECTORS ||--|{ MOVIES : directs
-    PERSONS ||--o{ CHARACTERS : "portrays"
+    MOVIES ||--o{ MOVIE_ACTORS : "includes"
+
+    GENRES ||--o{ MOVIE_GENRES : "includes"
+
+    PERSONS ||--o{ CHARACTERS : "portrayed by"
+    PERSONS ||--o{ MOVIE_ACTORS : "appears in"
+
     CHARACTERS ||--|{ MOVIES : "appears in"
-    MOVIES ||--o{ MOVIE_ACTORS : "features"
-    PERSONS ||--o{ MOVIE_ACTORS : "acts in"
-    MOVIES ||--o{ MOVIE_GENRES : "has genre"
+    CHARACTERS ||--o{ FILES : "has image"
+
+    MOVIE_ACTORS ||--|{ MOVIES : "appears in"
+    MOVIE_ACTORS ||--o{ PERSONS : "acts"
+
 ```
